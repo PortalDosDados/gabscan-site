@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GabScan • Corretor Inteligente de Provas OMR Offline</title>
+  <meta name="description" content="Corrija provas e gabaritos em segundos com seu celular. 100% offline, sem internet, com auditoria visual, análise pedagógica e economia de até 75% de papel.">
+  <meta name="keywords" content="correção de provas, gabarito, OMR, scanner de gabarito, leitor óptico, educação, professor, folha de respostas, offline">
+  
+  <!-- Open Graph / Redes Sociais -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://gabscan.com.br/">
+  <meta property="og:title" content="GabScan • Corretor de Provas e Gabaritos OMR">
+  <meta property="og:description" content="Aponte a câmera e obtenha a nota em menos de meio segundo. Processamento 100% no celular, sem custos com nuvem ou leitoras ópticas caras.">
+  <meta property="og:image" content="https://gabscan.com.br/assets/banner_1024x500.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/icone_512x512.png">
+
+  <style>
+    :root {
+      --primary: #1E3A8A;
+      --primary-light: #2563EB;
+      --primary-dark: #0F172A;
+      --accent: #10B981;
+      --accent-dark: #059669;
+      --text-main: #1E293B;
+      --text-muted: #64748B;
+      --bg-page: #F8FAFC;
+      --bg-card: #FFFFFF;
+      --border-color: #E2E8F0;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
+      --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: var(--text-main);
+      background-color: var(--bg-page);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--primary-light);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    a:hover {
+      color: var(--primary);
+    }
+
+    /* Container */
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--primary-dark);
+      letter-spacing: -0.5px;
+    }
+
+    .brand img {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(30, 58, 138, 0.2);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-main);
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary-light);
+    }
+
+    .btn-nav {
+      background: var(--primary-light);
+      color: #FFFFFF !important;
+      padding: 9px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+      transition: all 0.2s ease;
+    }
+
+    .btn-nav:hover {
+      background: var(--primary);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 8px rgba(37, 99, 235, 0.3);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 70px 0 60px;
+      background: radial-gradient(circle at top right, #EEF2FF 0%, #F8FAFC 60%);
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      align-items: center;
+      gap: 50px;
+    }
+
+    .badge-hero {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #DBEAFE;
+      color: #1E40AF;
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 999px;
+      margin-bottom: 20px;
+      border: 1px solid #BFDBFE;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 900;
+      line-height: 1.15;
+      color: var(--primary-dark);
+      letter-spacing: -1px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, var(--primary-light), #4338CA);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 32px;
+      max-width: 580px;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 36px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--primary-light);
+      color: #FFFFFF !important;
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 1.05rem;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(37, 99, 235, 0.4);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #FFFFFF;
+      color: var(--primary-dark) !important;
+      padding: 14px 24px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 1rem;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s ease;
+    }
+
+    .btn-secondary:hover {
+      background: #F1F5F9;
+      border-color: #CBD5E1;
+    }
+
+    .hero-proof {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .proof-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .proof-number {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--primary-dark);
+    }
+
+    .proof-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Hero Mockup */
+    .hero-mockup-wrapper {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-mockup {
+      width: 100%;
+      max-width: 320px;
+      border-radius: 36px;
+      box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.25);
+      border: 8px solid #0F172A;
+      background: #0F172A;
+      overflow: hidden;
+      transform: perspective(1000px) rotateY(-4deg) rotateX(2deg);
+      transition: transform 0.4s ease;
+    }
+
+    .hero-mockup:hover {
+      transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
+    }
+
+    .hero-mockup img {
+      width: 100%;
+      display: block;
+    }
+
+    /* Section Styling */
+    section {
+      padding: 80px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 50px;
+    }
+
+    .section-tag {
+      color: var(--primary-light);
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+      display: inline-block;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--primary-dark);
+      letter-spacing: -0.5px;
+      margin-bottom: 16px;
+    }
+
+    .section-desc {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+    }
+
+    /* Feature Grid */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .feature-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 32px 24px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: #BFDBFE;
+    }
+
+    .feature-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      margin-bottom: 20px;
+      background: #EFF6FF;
+      color: var(--primary-light);
+    }
+
+    .feature-card h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 12px;
+    }
+
+    .feature-card p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    /* Economia de Papel Highlight */
+    .economy-section {
+      background: #FFFFFF;
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .economy-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .economy-card {
+      border: 2px dashed #CBD5E1;
+      border-radius: 16px;
+      padding: 28px 20px;
+      text-align: center;
+      background: #F8FAFC;
+      transition: all 0.2s ease;
+    }
+
+    .economy-card.recommended {
+      border: 2px solid var(--accent);
+      background: #F0FDF4;
+    }
+
+    .economy-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+      background: #E2E8F0;
+      color: #475569;
+    }
+
+    .economy-card.recommended .economy-badge {
+      background: var(--accent);
+      color: #FFFFFF;
+    }
+
+    .economy-title {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--primary-dark);
+      margin-bottom: 8px;
+    }
+
+    .economy-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .economy-saving {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--accent-dark);
+    }
+
+    /* How it works */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      position: relative;
+    }
+
+    .step-card {
+      text-align: center;
+      padding: 24px;
+    }
+
+    .step-number {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 20px;
+      background: linear-gradient(135deg, var(--primary-light), var(--primary));
+      color: #FFFFFF;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      font-weight: 800;
+      box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+    }
+
+    .step-card h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--primary-dark);
+    }
+
+    .step-card p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    /* Banner CTA Final */
+    .cta-banner {
+      background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 100%);
+      color: #FFFFFF;
+      border-radius: 24px;
+      padding: 60px 40px;
+      text-align: center;
+      box-shadow: var(--shadow-xl);
+      margin-bottom: 60px;
+    }
+
+    .cta-banner h2 {
+      font-size: 2.4rem;
+      font-weight: 900;
+      margin-bottom: 16px;
+      letter-spacing: -0.5px;
+    }
+
+    .cta-banner p {
+      font-size: 1.15rem;
+      opacity: 0.9;
+      max-width: 650px;
+      margin: 0 auto 32px;
+      line-height: 1.6;
+    }
+
+    /* Footer */
+    footer {
+      background: #FFFFFF;
+      border-top: 1px solid var(--border-color);
+      padding: 50px 0 30px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .footer-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary-light);
+    }
+
+    .footer-copy {
+      text-align: center;
+      padding-top: 24px;
+      border-top: 1px solid var(--border-color);
+      font-size: 0.85rem;
+    }
+
+    /* Responsividade */
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .hero-cta {
+        justify-content: center;
+      }
+      .hero-proof {
+        justify-content: center;
+      }
+      .feature-grid, .economy-grid, .steps-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero h1 {
+        font-size: 2.3rem;
+      }
+      .nav-links {
+        display: none; /* Simplificado no mobile */
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <header class="navbar">
+    <div class="container nav-wrapper">
+      <a href="#" class="brand">
+        <img src="assets/icone_512x512.png" alt="GabScan Logo">
+        <span>GabScan</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#recursos">Recursos</a></li>
+        <li><a href="#economia">Economia de Papel</a></li>
+        <li><a href="#como-funciona">Como Funciona</a></li>
+        <li><a href="politica-privacidade.html">Política de Privacidade</a></li>
+        <li><a href="#download" class="btn-nav">Baixar App</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="badge-hero">
+            <span>🛡️ 100% Offline-First • Gratuito • Sem Servidor</span>
+          </div>
+          <h1>Correção de provas em segundos <span>direto pelo celular</span></h1>
+          <p>
+            Transforme a câmera do seu smartphone em uma poderosa leitora óptica (OMR). 
+            Corrija gabaritos instantaneamente, com auditoria visual, análise pedagógica de distratores e exportação para Excel.
+          </p>
+
+          <div class="hero-cta" id="download">
+            <a href="https://github.com/PortalDosDados/gab_scan_releases/releases/latest" class="btn-primary" target="_blank">
+              <span>📱 Baixar APK Oficial (v1.3.9)</span>
+            </a>
+            <a href="#economia" class="btn-secondary">
+              <span>📄 Ver Modelos de Folha PDF</span>
+            </a>
+          </div>
+
+          <div class="hero-proof">
+            <div class="proof-item">
+              <span class="proof-number">&lt; 0.5s</span>
+              <span class="proof-label">Por Prova</span>
+            </div>
+            <div class="proof-item">
+              <span class="proof-number">0 MB</span>
+              <span class="proof-label">Gasto de Dados</span>
+            </div>
+            <div class="proof-item">
+              <span class="proof-number">1 a 50</span>
+              <span class="proof-label">Questões</span>
+            </div>
+            <div class="proof-item">
+              <span class="proof-number">Até 75%</span>
+              <span class="proof-label">Economia Papel</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-mockup-wrapper">
+          <div class="hero-mockup">
+            <img src="assets/screenshot_1_1080x2400.png" alt="Tela do GabScan Corretor">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recursos Principais -->
+    <section id="recursos">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Diferenciais Exclusivos</span>
+          <h2 class="section-title">Construído sob medida para a rotina do professor</h2>
+          <p class="section-desc">
+            Diga adeus às horas exaustivas de correção manual e às caras leitoras ópticas de mesa.
+          </p>
+        </div>
+
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3>Motor OMR Local</h3>
+            <p>
+              Processamento instantâneo via visão computacional em Dart puro. Corrige rotação, perspectiva trapezoidal e sombras com algoritmo de Otsu diretamente no celular.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">🎯</div>
+            <h3>Auditoria Visual Transparente</h3>
+            <p>
+              Círculos verdes nos acertos, vermelhos com "X" nos erros e laranjas indicando o gabarito oficial esperado. Você tem certeza absoluta do que foi lido.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">📊</div>
+            <h3>Inteligência Pedagógica</h3>
+            <p>
+              Identifique na hora quais foram as questões mais difíceis da turma e descubra quais alternativas funcionaram como "pegadinhas" (análise de distratores).
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">✂️</div>
+            <h3>Economia Extrema de Papel</h3>
+            <p>
+              Gere folhas padronizadas de 1, 2 ou 4 gabaritos por página A4 com linhas pontilhadas de corte. Reduza o custo de impressão da escola em até 4 vezes.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">📝</div>
+            <h3>OCR do Nome &amp; Chamada</h3>
+            <p>
+              Reconhecimento óptico automático do nome manuscrito do aluno no cabeçalho com sugestão inteligente por similaridade cruzada com a Lista de Chamada da turma.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">🔒</div>
+            <h3>100% Offline &amp; LGPD</h3>
+            <p>
+              Nenhuma foto, nota ou nome de aluno é transmitido para servidores ou nuvem. Todos os dados permanecem isolados na memória segura do seu próprio celular.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Economia de Papel -->
+    <section id="economia" class="economy-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Formatos de Impressão</span>
+          <h2 class="section-title">Imprima direto do celular em PDF</h2>
+          <p class="section-desc">
+            Escolha o formato ideal para seu simulado ou prova rápida e economize papel.
+          </p>
+        </div>
+
+        <div class="economy-grid">
+          <div class="economy-card">
+            <span class="economy-badge">Provas Longas</span>
+            <h3 class="economy-title">1 por Folha (A4)</h3>
+            <p class="economy-desc">Ideal para avaliações completas de até 50 questões com cabeçalho amplo e espaço generoso.</p>
+            <div class="economy-saving">Formato Padrão A4</div>
+          </div>
+
+          <div class="economy-card recommended">
+            <span class="economy-badge">Mais Popular</span>
+            <h3 class="economy-title">2 por Folha (Meia A4 ✂)</h3>
+            <p class="economy-desc">Dois gabaritos lado a lado na folha A4 com linha guia de corte. O formato mais equilibrado para até 50 questões.</p>
+            <div class="economy-saving">50% de Economia de Papel</div>
+          </div>
+
+          <div class="economy-card">
+            <span class="economy-badge">Simulados Rápidos</span>
+            <h3 class="economy-title">4 por Folha (A6 ✂)</h3>
+            <p class="economy-desc">Quatro gabaritos compactos em uma única folha A4. Perfeito para testes semanais de 10 a 25 questões.</p>
+            <div class="economy-saving">75% de Economia de Papel</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Como Funciona -->
+    <section id="como-funciona">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Passo a Passo</span>
+          <h2 class="section-title">Como usar o GabScan em 3 passos</h2>
+          <p class="section-desc">
+            Simples, intuitivo e pronto para uso em sala de aula sem complicação.
+          </p>
+        </div>
+
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <h3>Emita as Folhas em PDF</h3>
+            <p>Selecione a quantidade de questões (10, 25 ou 50), escolha o layout econômico e gere o PDF na hora para impressão ou compartilhamento.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <h3>Configure o Gabarito</h3>
+            <p>Marque as respostas oficiais corretas com toques simples no aplicativo e ajuste a nota de corte desejada para a turma.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <h3>Escaneie e Exporte</h3>
+            <p>Aponte a câmera para a folha do aluno. O app corrige na hora, anota a imagem com a auditoria e gera a planilha consolidada em CSV.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="container">
+      <div class="cta-banner">
+        <h2>Pronto para recuperar horas da sua semana?</h2>
+        <p>
+          Baixe o GabScan gratuitamente e experimente a liberdade de corrigir uma prova inteira em poucos segundos, sem precisar de internet ou mensalidades.
+        </p>
+        <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
+          <a href="https://github.com/PortalDosDados/gab_scan_releases/releases/latest" class="btn-primary" target="_blank" style="background: #FFFFFF; color: #0F172A !important;">
+            <span>📥 Baixar GabScan Offline (APK)</span>
+          </a>
+          <a href="politica-privacidade.html" class="btn-secondary" style="background: transparent; color: #FFFFFF !important; border-color: rgba(255,255,255,0.4);">
+            <span>🛡️ Conhecer Nossa Política LGPD</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-wrapper">
+        <div class="brand">
+          <img src="assets/icone_512x512.png" alt="GabScan Logo">
+          <span>GabScan</span>
+        </div>
+        <ul class="footer-links">
+          <li><a href="#recursos">Recursos</a></li>
+          <li><a href="#economia">Formatos de Folha</a></li>
+          <li><a href="politica-privacidade.html">Política de Privacidade</a></li>
+          <li><a href="mailto:contato@gabscan.com.br">contato@gabscan.com.br</a></li>
+        </ul>
+      </div>
+      <div class="footer-copy">
+        <p>&copy; 2026 GabScan • Desenvolvido com foco no professor e no ecossistema educacional brasileiro. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
