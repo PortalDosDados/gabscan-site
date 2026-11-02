@@ -7,8 +7,9 @@
 
 ## Validação e Testes
 * Validação Automatizada (CI): Execução de HTMLHint para sintaxe e Lychee para validação de links [.github/workflows/ci.yml].
+* Exclusão Temporária do Repositório de Releases: O link `PortalDosDados/gab_scan_releases` está excluído temporariamente no Lychee via `--exclude` enquanto o repositório for privado. Deve ser reativado assim que o repositório for público (ver [README.md]).
 * Teste Manual: validação visual via servidor HTTP local em resoluções Desktop e Mobile antes de qualquer publicação [SUGESTÃO (confirmar)].
-* Validação de Links: testar todos os links de ancoragem interna (`#recursos`, `#economia`) e rotas externas [index.html: L803-806].
+* Validação de Links: testar todos os links de ancoragem interna (`#diferenciais`, `#economia`, etc.) e rotas externas.
 
 ## Checklist Obrigatório da IA Pré-Conclusão
 Antes de finalizar qualquer tarefa ou alteração no repositório, a IA DEVE verificar:

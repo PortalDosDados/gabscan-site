@@ -27,5 +27,6 @@ jobs:
       - name: Verificar Links (Lychee)
         uses: lycheeverse/lychee-action@v2
         with:
-          args: --verbose --no-progress "./**/*.html"
+          # TODO (Roadmap): Remover '--exclude' assim que o repositório 'gab_scan_releases' for tornado público
+          args: --verbose --no-progress --exclude "https://github.com/PortalDosDados/gab_scan_releases.*" "./**/*.html"
           fail: true
