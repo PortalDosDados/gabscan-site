@@ -3,7 +3,7 @@
 ## Pré-requisitos da Google Play Store (DIRETRIZ)
 * Conformidade da URL de Política de Privacidade: a rota deve retornar HTTP 200 permanentemente [README.md].
 * Cláusula de Exclusão de Dados: a política DEVE manter explícito que o app é 100% offline e que a exclusão dos dados é realizada pelo usuário limpando o cache/dados do app ou desinstalando-o [politica-privacidade.html: L165-177].
-* Dados de Contato: e-mail oficial `contato@gabscan.com.br` e menção ao desenvolvedor `Portal dos Dados` devem permanecer visíveis no rodapé e na política [README.md; politica-privacidade.html].
+* Dados de Contato: e-mail oficial `contatoportaldosdados@gmail.com` e menção ao desenvolvedor `Portal dos Dados` devem permanecer visíveis no rodapé e na política [README.md; politica-privacidade.html].
 
 ## Validação e Testes
 * Validação Automatizada (CI): Execução de HTMLHint para sintaxe e Lychee para validação de links [.github/workflows/ci.yml].

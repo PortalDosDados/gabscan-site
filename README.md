@@ -71,7 +71,7 @@ Tarefas técnicas vinculadas ao ciclo de publicação oficial do aplicativo:
 
 ## 📬 Contato
 
-* **E-mail Institucional:** [contato@gabscan.com.br](mailto:contato@gabscan.com.br)
+* **E-mail Institucional:** [contatoportaldosdados@gmail.com](mailto:contatoportaldosdados@gmail.com)
 * **Desenvolvido por:** Portal dos Dados
 
 &copy; 2026 GabScan. Todos os direitos reservados.
