@@ -1,0 +1,31 @@
+name: CI • Qualidade e Validação
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate-html:
+    name: Validação de Sintaxe HTML
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
+
+      - name: Executar HTMLHint
+        run: npx --yes htmlhint "**/*.html"
+
+  check-links:
+    name: Verificação de Links
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
+
+      - name: Verificar Links (Lychee)
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --verbose --no-progress --exclude-mail --base . "./**/*.html"
+          fail: true
