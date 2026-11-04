@@ -60,15 +60,6 @@ Para vincular o domínio customizado `gabscan.com.br` a este repositório do Git
 
 ---
 
-## 🗺️ Roadmap & Pendências de Lançamento
-
-Tarefas técnicas vinculadas ao ciclo de publicação oficial do aplicativo:
-
-- [ ] **Tornar o repositório de releases público**: Alterar a visibilidade de `PortalDosDados/gab_scan_releases` para público no lançamento oficial.
-- [ ] **Reverter exclusão no CI**: Remover a flag `--exclude "https://github.com/PortalDosDados/gab_scan_releases.*"` do arquivo [.github/workflows/ci.yml](.github/workflows/ci.yml) para que o Lychee passe a auditar ativamente o link oficial de download contra status `200 OK`.
-
----
-
 ## 📬 Contato
 
 * **E-mail Institucional:** [contatoportaldosdados@gmail.com](mailto:contatoportaldosdados@gmail.com)
