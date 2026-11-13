@@ -143,9 +143,9 @@
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
+      grid-template-columns: 1fr 1.15fr;
       align-items: center;
-      gap: 50px;
+      gap: 42px;
     }
 
     .badge-hero {
@@ -482,40 +482,52 @@
       gap: 24px;
     }
 
-    .tutorial-video-header {
-      text-align: center;
-      margin: 56px auto 20px;
-      max-width: 720px;
-    }
-
-    .tutorial-video-header h3 {
-      font-size: 1.5rem;
-      font-weight: 800;
-      color: var(--primary-dark);
-      margin-bottom: 6px;
-    }
-
-    .tutorial-video-header p {
-      font-size: 0.98rem;
-      color: var(--text-muted);
-    }
-
-    .tutorial-video-wrapper {
-      max-width: 880px;
-      margin: 0 auto;
+    .hero-video-card {
       background: var(--primary-dark);
       border-radius: 20px;
       padding: 12px;
-      box-shadow: var(--shadow-xl);
-      border: 1px solid var(--border-color);
+      box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.3);
+      border: 1px solid rgba(37, 99, 235, 0.25);
     }
 
-    .tutorial-video-wrapper video {
+    .hero-video-card video {
       width: 100%;
       display: block;
       border-radius: 12px;
       aspect-ratio: 16 / 9;
       background: #0F172A;
+    }
+
+    .hero-video-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 6px 2px;
+      flex-wrap: wrap;
+    }
+
+    .hero-video-caption {
+      color: #CBD5E1;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .btn-sound-toggle {
+      background: var(--accent);
+      color: #0F172A;
+      border: none;
+      border-radius: 999px;
+      padding: 7px 14px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.15s ease, opacity 0.15s ease;
+    }
+
+    .btn-sound-toggle:hover {
+      transform: translateY(-1px);
+      opacity: 0.95;
     }
 
     .beta-callout {
@@ -817,8 +829,8 @@
             <a href="https://docs.google.com/forms/d/1wMNkDaTGjpJIft3FW5iDv74Ot44a9PgL_qbyNCLr-SQ/viewform" class="btn-primary" target="_blank" rel="noopener noreferrer">
               <span>🎓 Quer testar o app? Participe do Beta!</span>
             </a>
-            <a href="#video-tutorial" class="btn-secondary">
-              <span>▶️ Assistir Tutorial (52s)</span>
+            <a href="#telas" class="btn-secondary">
+              <span>📱 Ver Telas do App</span>
             </a>
           </div>
 
@@ -842,9 +854,14 @@
           </div>
         </div>
 
-        <div class="hero-mockup-wrapper">
-          <div class="hero-mockup">
-            <img src="assets/screenshot_1_1080x2400.png?v=3" alt="Tela do GabScan Corretor">
+        <div id="video-tutorial" class="hero-video-card">
+          <video id="hero-tutorial-video" autoplay muted loop playsinline controls preload="auto" poster="assets/banner_1024x500.png">
+            <source src="assets/tutorial_gabscan.mp4?v=2" type="video/mp4">
+            Seu navegador não suporta a reprodução de vídeo HTML5.
+          </video>
+          <div class="hero-video-bar">
+            <span class="hero-video-caption">▶️ Apresentação oficial para Professores</span>
+            <button type="button" id="toggle-sound-btn" class="btn-sound-toggle">🔊 Ouvir Narração</button>
           </div>
         </div>
       </div>
@@ -993,18 +1010,6 @@
           </div>
         </div>
 
-        <div id="video-tutorial" class="tutorial-video-header">
-          <h3>Veja o GabScan funcionando na prática (52 segundos)</h3>
-          <p>Assista ao passo a passo completo da emissão do gabarito à análise pedagógica da turma.</p>
-        </div>
-
-        <div class="tutorial-video-wrapper">
-          <video controls playsinline preload="metadata" poster="assets/banner_1024x500.png">
-            <source src="assets/tutorial_gabscan.mp4" type="video/mp4">
-            Seu navegador não suporta a reprodução de vídeo HTML5.
-          </video>
-        </div>
-
         <div class="beta-callout">
           <div class="beta-callout-text">
             <h3>🎓 Seja um Professor Beta Tester</h3>
@@ -1030,19 +1035,19 @@
 
         <div class="screens-grid">
           <div class="screen-card">
-            <img src="assets/screenshot_2_emissao_pdf.png" alt="Emissão de gabarito em PDF" loading="lazy">
+            <img src="assets/screenshot_2_emissao_pdf.png?v=4" alt="Emissão de gabarito em PDF" loading="lazy">
             <span>1. Emissão de PDF</span>
           </div>
           <div class="screen-card">
-            <img src="assets/screenshot_1_corretor.png" alt="Tela do corretor OMR" loading="lazy">
+            <img src="assets/screenshot_1_corretor.png?v=4" alt="Tela do corretor OMR" loading="lazy">
             <span>2. Corretor OMR</span>
           </div>
           <div class="screen-card">
-            <img src="assets/screenshot_3_quadro_turma.png" alt="Quadro de notas da turma" loading="lazy">
+            <img src="assets/screenshot_3_quadro_turma.png?v=4" alt="Quadro de notas da turma" loading="lazy">
             <span>3. Quadro da Turma</span>
           </div>
           <div class="screen-card">
-            <img src="assets/screenshot_4_analise_pedagogica.png" alt="Análise pedagógica por questão" loading="lazy">
+            <img src="assets/screenshot_4_analise_pedagogica.png?v=4" alt="Análise pedagógica por questão" loading="lazy">
             <span>4. Análise Pedagógica</span>
           </div>
         </div>
@@ -1122,5 +1127,23 @@
     </div>
   </footer>
 
+  <script>
+    (function () {
+      var video = document.getElementById('hero-tutorial-video');
+      var btn = document.getElementById('toggle-sound-btn');
+      if (!video || !btn) return;
+      btn.addEventListener('click', function () {
+        if (video.muted) {
+          video.muted = false;
+          video.currentTime = 0;
+          video.play();
+          btn.textContent = '🔇 Silenciar Narração';
+        } else {
+          video.muted = true;
+          btn.textContent = '🔊 Ouvir Narração';
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
