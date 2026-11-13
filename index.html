@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GabScan • Corretor Inteligente de Provas OMR Offline</title>
-  <meta name="description" content="Corrija provas e gabaritos em segundos com seu celular. 100% offline, sem internet, com auditoria visual, análise pedagógica e economia de até 75% de papel.">
-  <meta name="keywords" content="correção de provas, gabarito, OMR, scanner de gabarito, leitor óptico, educação, professor, folha de respostas, offline">
+  <title>GabScan • Beta Fechado para Professores | Corretor de Provas Offline</title>
+  <meta name="description" content="Corrija provas e gabaritos em segundos com a câmera do celular, 100% offline. Participe do Beta Fechado para professores e garanta acesso gratuito após o lançamento oficial.">
+  <meta name="keywords" content="correção de provas, gabarito, OMR, scanner de gabarito, leitor óptico, educação, professor, folha de respostas, offline, beta tester">
   
   <!-- Open Graph / Redes Sociais -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://gabscan.com.br/">
-  <meta property="og:title" content="GabScan • Corretor de Provas e Gabaritos OMR">
-  <meta property="og:description" content="Aponte a câmera e obtenha a nota em menos de meio segundo. Processamento 100% no celular, sem custos com nuvem ou leitoras ópticas caras.">
+  <meta property="og:title" content="GabScan • Seja Professor Beta Tester (Acesso Gratuito)">
+  <meta property="og:description" content="Corrija gabaritos em menos de 0,5s direto no celular Android, 100% offline. Teste no Beta Fechado da Google Play e garanta acesso gratuito após o lançamento.">
   <meta property="og:image" content="https://gabscan.com.br/assets/banner_1024x500.png">
 
   <!-- Favicon -->
@@ -476,6 +476,184 @@
       color: var(--text-muted);
     }
 
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .tutorial-video-header {
+      text-align: center;
+      margin: 56px auto 20px;
+      max-width: 720px;
+    }
+
+    .tutorial-video-header h3 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--primary-dark);
+      margin-bottom: 6px;
+    }
+
+    .tutorial-video-header p {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+    }
+
+    .tutorial-video-wrapper {
+      max-width: 880px;
+      margin: 0 auto;
+      background: var(--primary-dark);
+      border-radius: 20px;
+      padding: 12px;
+      box-shadow: var(--shadow-xl);
+      border: 1px solid var(--border-color);
+    }
+
+    .tutorial-video-wrapper video {
+      width: 100%;
+      display: block;
+      border-radius: 12px;
+      aspect-ratio: 16 / 9;
+      background: #0F172A;
+    }
+
+    .beta-callout {
+      max-width: 880px;
+      margin: 28px auto 0;
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(37, 99, 235, 0.08));
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      border-radius: 16px;
+      padding: 24px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .beta-callout-text h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--primary-dark);
+      margin-bottom: 4px;
+    }
+
+    .beta-callout-text p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    /* Esquema visual de economia de papel (folha A4) */
+    .sheet-diagram {
+      width: 84px;
+      height: 112px;
+      margin: 0 auto 18px;
+      background: #FFFFFF;
+      border: 2px solid #94A3B8;
+      border-radius: 6px;
+      padding: 6px;
+      display: grid;
+      gap: 5px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .sheet-diagram.cols-1 {
+      grid-template-columns: 1fr;
+    }
+
+    .sheet-diagram.cols-2 {
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+    }
+
+    .sheet-diagram.cols-4 {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+    }
+
+    .sheet-slot {
+      background: #DBEAFE;
+      border: 1px dashed #2563EB;
+      border-radius: 3px;
+    }
+
+    .economy-card.recommended .sheet-slot {
+      background: #D1FAE5;
+      border-color: #059669;
+    }
+
+    /* Galeria de telas do app */
+    .screens-section {
+      padding-top: 20px;
+    }
+
+    .screens-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .screen-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 12px;
+      box-shadow: var(--shadow-sm);
+      text-align: center;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .screen-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .screen-card img {
+      width: 100%;
+      border-radius: 10px;
+      display: block;
+      margin-bottom: 12px;
+      border: 1px solid var(--border-color);
+    }
+
+    .screen-card span {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+    }
+
+    /* FAQ */
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .faq-item h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 8px;
+    }
+
+    .faq-item p {
+      font-size: 0.94rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
     /* Banner CTA Final */
     .cta-banner {
       background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 100%);
@@ -558,14 +736,43 @@
       .hero-proof {
         justify-content: center;
       }
-      .feature-grid, .economy-grid, .steps-grid {
+      .feature-grid, .economy-grid, .steps-grid, .faq-grid {
         grid-template-columns: 1fr;
+      }
+      .screens-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
       .hero h1 {
         font-size: 2.3rem;
       }
       .nav-links {
-        display: none; /* Simplificado no mobile */
+        display: none; /* Mantém botão Quero Testar visível no mobile */
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero {
+        padding: 44px 0 40px;
+      }
+      .hero h1 {
+        font-size: 1.95rem;
+      }
+      .section-title {
+        font-size: 1.75rem;
+      }
+      .cta-banner {
+        padding: 40px 20px;
+      }
+      .cta-banner h2 {
+        font-size: 1.75rem;
+      }
+      .beta-callout {
+        padding: 20px;
+        justify-content: center;
+        text-align: center;
+      }
+      .screens-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -579,13 +786,16 @@
         <img src="assets/icone_512x512.png" alt="GabScan Logo">
         <span>GabScan</span>
       </a>
-      <ul class="nav-links">
-        <li><a href="#recursos">Recursos</a></li>
-        <li><a href="#economia">Economia de Papel</a></li>
-        <li><a href="#como-funciona">Como Funciona</a></li>
-        <li><a href="politica-privacidade.html">Política de Privacidade</a></li>
-        <li><a href="#download" class="btn-nav">Baixar App</a></li>
-      </ul>
+      <div class="nav-actions">
+        <ul class="nav-links">
+          <li><a href="#recursos">Recursos</a></li>
+          <li><a href="#economia">Economia de Papel</a></li>
+          <li><a href="#como-funciona">Como Funciona</a></li>
+          <li><a href="#faq">Dúvidas</a></li>
+          <li><a href="politica-privacidade.html">Privacidade</a></li>
+        </ul>
+        <a href="https://docs.google.com/forms/d/1wMNkDaTGjpJIft3FW5iDv74Ot44a9PgL_qbyNCLr-SQ/viewform" class="btn-nav" target="_blank" rel="noopener noreferrer">Quero Testar</a>
+      </div>
     </div>
   </header>
 
@@ -595,20 +805,20 @@
       <div class="container hero-grid">
         <div class="hero-content">
           <div class="badge-hero">
-            <span>🛡️ 100% Offline-First • Gratuito • Sem Servidor</span>
+            <span>🎓 Beta Fechado para Professores • Acesso Gratuito após Lançamento</span>
           </div>
           <h1>Correção de provas em segundos <span>direto pelo celular</span></h1>
           <p>
-            Transforme a câmera do seu smartphone em uma poderosa leitora óptica (OMR). 
-            Corrija gabaritos instantaneamente, com auditoria visual, análise pedagógica de distratores e exportação para Excel.
+            Transforme a câmera do seu celular Android em uma leitora óptica (OMR) 100% offline.
+            Participe dos testes na Google Play e garanta acesso gratuito após a publicação oficial.
           </p>
 
           <div class="hero-cta" id="download">
-            <a href="https://github.com/PortalDosDados/gab_scan_releases/releases/latest" class="btn-primary" target="_blank">
-              <span>📱 Baixar APK Oficial (v1.3.9)</span>
+            <a href="https://docs.google.com/forms/d/1wMNkDaTGjpJIft3FW5iDv74Ot44a9PgL_qbyNCLr-SQ/viewform" class="btn-primary" target="_blank" rel="noopener noreferrer">
+              <span>🎓 Quer testar o app? Participe do Beta!</span>
             </a>
-            <a href="#economia" class="btn-secondary">
-              <span>📄 Ver Modelos de Folha PDF</span>
+            <a href="#video-tutorial" class="btn-secondary">
+              <span>▶️ Assistir Tutorial (52s)</span>
             </a>
           </div>
 
@@ -654,9 +864,9 @@
         <div class="feature-grid">
           <div class="feature-card">
             <div class="feature-icon">⚡</div>
-            <h3>Motor OMR Local</h3>
+            <h3>Leitura Rápida no Celular</h3>
             <p>
-              Processamento instantâneo via visão computacional em Dart puro. Corrige rotação, perspectiva trapezoidal e sombras com algoritmo de Otsu diretamente no celular.
+              Corrige em menos de meio segundo, mesmo com a folha inclinada, sombreada ou fora de esquadro — tudo processado localmente sem depender de internet.
             </p>
           </div>
 
@@ -672,7 +882,7 @@
             <div class="feature-icon">📊</div>
             <h3>Inteligência Pedagógica</h3>
             <p>
-              Identifique na hora quais foram as questões mais difíceis da turma e descubra quais alternativas funcionaram como "pegadinhas" (análise de distratores).
+              Identifique na hora quais foram as questões mais difíceis da turma e descubra quais alternativas funcionaram como "pegadinhas" para os alunos.
             </p>
           </div>
 
@@ -686,9 +896,9 @@
 
           <div class="feature-card">
             <div class="feature-icon">📝</div>
-            <h3>OCR do Nome &amp; Chamada</h3>
+            <h3>Leitura do Nome &amp; Chamada</h3>
             <p>
-              Reconhecimento óptico automático do nome manuscrito do aluno no cabeçalho com sugestão inteligente por similaridade cruzada com a Lista de Chamada da turma.
+              Lê o nome escrito à mão no cabeçalho e cruza automaticamente com a sua Lista de Chamada para sugerir e vincular o aluno com um toque.
             </p>
           </div>
 
@@ -716,6 +926,9 @@
 
         <div class="economy-grid">
           <div class="economy-card">
+            <div class="sheet-diagram cols-1" aria-hidden="true">
+              <div class="sheet-slot"></div>
+            </div>
             <span class="economy-badge">Provas Longas</span>
             <h3 class="economy-title">1 por Folha (A4)</h3>
             <p class="economy-desc">Ideal para avaliações completas de até 50 questões com cabeçalho amplo e espaço generoso.</p>
@@ -723,6 +936,10 @@
           </div>
 
           <div class="economy-card recommended">
+            <div class="sheet-diagram cols-2" aria-hidden="true">
+              <div class="sheet-slot"></div>
+              <div class="sheet-slot"></div>
+            </div>
             <span class="economy-badge">Mais Popular</span>
             <h3 class="economy-title">2 por Folha (Meia A4 ✂)</h3>
             <p class="economy-desc">Dois gabaritos lado a lado na folha A4 com linha guia de corte. O formato mais equilibrado para até 50 questões.</p>
@@ -730,6 +947,12 @@
           </div>
 
           <div class="economy-card">
+            <div class="sheet-diagram cols-4" aria-hidden="true">
+              <div class="sheet-slot"></div>
+              <div class="sheet-slot"></div>
+              <div class="sheet-slot"></div>
+              <div class="sheet-slot"></div>
+            </div>
             <span class="economy-badge">Simulados Rápidos</span>
             <h3 class="economy-title">4 por Folha (A6 ✂)</h3>
             <p class="economy-desc">Quatro gabaritos compactos em uma única folha A4. Perfeito para testes semanais de 10 a 25 questões.</p>
@@ -769,6 +992,92 @@
             <p>Aponte a câmera para a folha do aluno. O app corrige na hora, anota a imagem com a auditoria e gera a planilha consolidada em CSV.</p>
           </div>
         </div>
+
+        <div id="video-tutorial" class="tutorial-video-header">
+          <h3>Veja o GabScan funcionando na prática (52 segundos)</h3>
+          <p>Assista ao passo a passo completo da emissão do gabarito à análise pedagógica da turma.</p>
+        </div>
+
+        <div class="tutorial-video-wrapper">
+          <video controls playsinline preload="metadata" poster="assets/banner_1024x500.png">
+            <source src="assets/tutorial_gabscan.mp4" type="video/mp4">
+            Seu navegador não suporta a reprodução de vídeo HTML5.
+          </video>
+        </div>
+
+        <div class="beta-callout">
+          <div class="beta-callout-text">
+            <h3>🎓 Seja um Professor Beta Tester</h3>
+            <p>Participe do Beta Fechado na Google Play (Android) e garanta acesso gratuito após o lançamento oficial.</p>
+          </div>
+          <a href="https://docs.google.com/forms/d/1wMNkDaTGjpJIft3FW5iDv74Ot44a9PgL_qbyNCLr-SQ/viewform" class="btn-primary" target="_blank" rel="noopener noreferrer">
+            <span>✍️ Inscrever-se no Beta</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Telas do App -->
+    <section id="telas" class="screens-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Por Dentro do App</span>
+          <h2 class="section-title">Conheça cada tela do GabScan</h2>
+          <p class="section-desc">
+            Interface pensada para ser rápida e intuitiva entre uma aula e outra.
+          </p>
+        </div>
+
+        <div class="screens-grid">
+          <div class="screen-card">
+            <img src="assets/screenshot_2_emissao_pdf.png" alt="Emissão de gabarito em PDF" loading="lazy">
+            <span>1. Emissão de PDF</span>
+          </div>
+          <div class="screen-card">
+            <img src="assets/screenshot_1_corretor.png" alt="Tela do corretor OMR" loading="lazy">
+            <span>2. Corretor OMR</span>
+          </div>
+          <div class="screen-card">
+            <img src="assets/screenshot_3_quadro_turma.png" alt="Quadro de notas da turma" loading="lazy">
+            <span>3. Quadro da Turma</span>
+          </div>
+          <div class="screen-card">
+            <img src="assets/screenshot_4_analise_pedagogica.png" alt="Análise pedagógica por questão" loading="lazy">
+            <span>4. Análise Pedagógica</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Dúvidas Frequentes</span>
+          <h2 class="section-title">Como funciona o Beta Fechado</h2>
+          <p class="section-desc">
+            Tire suas dúvidas antes de preencher o formulário de inscrição.
+          </p>
+        </div>
+
+        <div class="faq-grid">
+          <div class="faq-item">
+            <h3>Qual celular preciso ter para testar?</h3>
+            <p>Um smartphone Android com acesso à Google Play Store e câmera traseira funcionando.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Qual e-mail devo informar no formulário?</h3>
+            <p>Informe o <strong>mesmo Gmail cadastrado na Google Play</strong> do seu celular. A Google Play libera o link de teste fechado apenas para esse e-mail.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Vou ter acesso gratuito após o lançamento?</h3>
+            <p>Sim! Professores que participarem dos testes no Beta Fechado garantem acesso gratuito quando o app for publicado oficialmente.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Precisa de internet na sala de aula?</h3>
+            <p>Não. Após baixar na Google Play, o GabScan corrige 100% das provas offline, sem enviar fotos ou notas dos alunos para servidores.</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -777,11 +1086,11 @@
       <div class="cta-banner">
         <h2>Pronto para recuperar horas da sua semana?</h2>
         <p>
-          Baixe o GabScan gratuitamente e experimente a liberdade de corrigir uma prova inteira em poucos segundos, sem precisar de internet ou mensalidades.
+          Inscreva-se no Beta Fechado para professores e garanta acesso gratuito após o lançamento oficial na Google Play, sem custos ou mensalidades.
         </p>
         <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
-          <a href="https://github.com/PortalDosDados/gab_scan_releases/releases/latest" class="btn-primary" target="_blank" style="background: #FFFFFF; color: #0F172A !important;">
-            <span>📥 Baixar GabScan Offline (APK)</span>
+          <a href="https://docs.google.com/forms/d/1wMNkDaTGjpJIft3FW5iDv74Ot44a9PgL_qbyNCLr-SQ/viewform" class="btn-primary" target="_blank" rel="noopener noreferrer" style="background: #10B981; color: #0F172A !important;">
+            <span>🎓 Quer testar o app? Garanta acesso gratuito!</span>
           </a>
           <a href="politica-privacidade.html" class="btn-secondary" style="background: transparent; color: #FFFFFF !important; border-color: rgba(255,255,255,0.4);">
             <span>🛡️ Conhecer Nossa Política LGPD</span>
@@ -802,6 +1111,7 @@
         <ul class="footer-links">
           <li><a href="#recursos">Recursos</a></li>
           <li><a href="#economia">Formatos de Folha</a></li>
+          <li><a href="#faq">Dúvidas</a></li>
           <li><a href="politica-privacidade.html">Política de Privacidade</a></li>
           <li><a href="mailto:contatoportaldosdados@gmail.com">contatoportaldosdados@gmail.com</a></li>
         </ul>
