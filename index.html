@@ -6,6 +6,7 @@
   <title>GabScan • Beta Fechado para Professores | Corretor de Provas Offline</title>
   <meta name="description" content="Corrija provas e gabaritos em segundos com a câmera do celular, 100% offline. Participe do Beta Fechado para professores e garanta acesso gratuito após o lançamento oficial.">
   <meta name="keywords" content="correção de provas, gabarito, OMR, scanner de gabarito, leitor óptico, educação, professor, folha de respostas, offline, beta tester">
+  <link rel="canonical" href="https://gabscan.com.br/">
   
   <!-- Open Graph / Redes Sociais -->
   <meta property="og:type" content="website">
@@ -14,8 +15,39 @@
   <meta property="og:description" content="Corrija gabaritos em menos de 0,5s direto no celular Android, 100% offline. Teste no Beta Fechado da Google Play e garanta acesso gratuito após o lançamento.">
   <meta property="og:image" content="https://gabscan.com.br/assets/banner_1024x500.png">
 
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="GabScan • Corretor de Provas e Gabaritos Offline">
+  <meta name="twitter:description" content="Transforme a câmera do celular em uma leitora óptica (OMR) 100% offline. Participe do Beta Fechado para professores na Google Play.">
+  <meta name="twitter:image" content="https://gabscan.com.br/assets/banner_1024x500.png">
+
+  <!-- Dados Estruturados (Schema.org) -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "GabScan",
+      "operatingSystem": "Android",
+      "applicationCategory": "EducationalApplication",
+      "url": "https://gabscan.com.br/",
+      "image": "https://gabscan.com.br/assets/banner_1024x500.png",
+      "description": "Aplicativo Android 100% offline para correção automática de gabaritos (OMR), emissão de folhas econômicas A4/A5/A6, boletins em PDF e análise pedagógica de turma.",
+      "inLanguage": "pt-BR",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "BRL"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "Portal dos Dados",
+        "email": "contatoportaldosdados@gmail.com"
+      }
+    }
+  </script>
+
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="assets/icone_512x512.png">
+  <link rel="icon" type="image/png" href="assets/icone_web.png">
 
   <style>
     :root {
@@ -258,34 +290,6 @@
       font-weight: 500;
       text-transform: uppercase;
       letter-spacing: 0.5px;
-    }
-
-    /* Hero Mockup */
-    .hero-mockup-wrapper {
-      position: relative;
-      display: flex;
-      justify-content: center;
-    }
-
-    .hero-mockup {
-      width: 100%;
-      max-width: 320px;
-      border-radius: 36px;
-      box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.25);
-      border: 8px solid #0F172A;
-      background: #0F172A;
-      overflow: hidden;
-      transform: perspective(1000px) rotateY(-4deg) rotateX(2deg);
-      transition: transform 0.4s ease;
-    }
-
-    .hero-mockup:hover {
-      transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
-    }
-
-    .hero-mockup img {
-      width: 100%;
-      display: block;
     }
 
     /* Section Styling */
@@ -613,12 +617,14 @@
       padding: 12px;
       box-shadow: var(--shadow-sm);
       text-align: center;
+      cursor: zoom-in;
       transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
     .screen-card:hover {
       transform: translateY(-4px);
       box-shadow: var(--shadow-lg);
+      border-color: #BFDBFE;
     }
 
     .screen-card img {
@@ -634,6 +640,84 @@
       font-size: 0.9rem;
       font-weight: 700;
       color: var(--primary-dark);
+    }
+
+    .screen-zoom-hint {
+      font-size: 0.78rem !important;
+      font-weight: 500 !important;
+      color: var(--text-muted) !important;
+      margin-top: 4px;
+    }
+
+    .beta-note {
+      font-size: 0.88rem !important;
+      color: var(--text-muted);
+      margin-top: -20px !important;
+      margin-bottom: 24px !important;
+      line-height: 1.5;
+    }
+
+    /* Lightbox Modal */
+    .lightbox-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: rgba(15, 23, 42, 0.88);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .lightbox-modal[hidden] {
+      display: none;
+    }
+
+    .lightbox-content {
+      position: relative;
+      max-width: 460px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .lightbox-content img {
+      width: 100%;
+      max-height: 82vh;
+      object-fit: contain;
+      border-radius: 16px;
+      box-shadow: var(--shadow-xl);
+      background: #FFFFFF;
+    }
+
+    .lightbox-caption {
+      color: #F8FAFC;
+      font-size: 1rem;
+      font-weight: 600;
+      margin-top: 12px;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: -16px;
+      right: -12px;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 2px solid #FFFFFF;
+      background: var(--primary-dark);
+      color: #FFFFFF;
+      font-size: 1.4rem;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-md);
+    }
+
+    .lightbox-close:hover {
+      background: var(--primary-light);
     }
 
     /* FAQ */
@@ -690,6 +774,34 @@
       max-width: 650px;
       margin: 0 auto 32px;
       line-height: 1.6;
+    }
+
+    .cta-actions {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-cta-accent {
+      background: var(--accent);
+      color: #0F172A !important;
+    }
+
+    .btn-cta-accent:hover {
+      background: var(--accent-dark);
+      color: #FFFFFF !important;
+    }
+
+    .btn-cta-outline {
+      background: transparent;
+      color: #FFFFFF !important;
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .btn-cta-outline:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.75);
     }
 
     /* Footer */
@@ -795,7 +907,7 @@
   <header class="navbar">
     <div class="container nav-wrapper">
       <a href="#" class="brand">
-        <img src="assets/icone_512x512.png" alt="GabScan Logo">
+        <img src="assets/icone_web.png" alt="GabScan Logo" width="40" height="40">
         <span>GabScan</span>
       </a>
       <div class="nav-actions">
@@ -833,6 +945,9 @@
               <span>📱 Ver Telas do App</span>
             </a>
           </div>
+          <p class="beta-note">
+            ℹ️ Após enviar seu <strong>Gmail</strong> no formulário, você receberá o <strong>convite oficial da Google Play</strong> por e-mail para liberar o download gratuito.
+          </p>
 
           <div class="hero-proof">
             <div class="proof-item">
@@ -855,7 +970,7 @@
         </div>
 
         <div id="video-tutorial" class="hero-video-card">
-          <video id="hero-tutorial-video" autoplay muted loop playsinline controls preload="auto" poster="assets/banner_1024x500.png">
+          <video id="hero-tutorial-video" autoplay muted loop playsinline controls preload="metadata" poster="assets/banner_1024x500.png">
             <source src="assets/tutorial_gabscan.mp4?v=2" type="video/mp4">
             Seu navegador não suporta a reprodução de vídeo HTML5.
           </video>
@@ -881,49 +996,49 @@
         <div class="feature-grid">
           <div class="feature-card">
             <div class="feature-icon">⚡</div>
-            <h3>Leitura Rápida no Celular</h3>
+            <h3>Leitura em Qualquer Orientação</h3>
             <p>
-              Corrige em menos de meio segundo, mesmo com a folha inclinada, sombreada ou fora de esquadro — tudo processado localmente sem depender de internet.
+              Corrige em menos de meio segundo em qualquer ângulo (<strong>0°, 90°, 180° ou 270°</strong>) com âncora fiducial inteligente — mesmo com folha inclinada ou sombreada e 100% offline.
             </p>
           </div>
 
           <div class="feature-card">
             <div class="feature-icon">🎯</div>
-            <h3>Auditoria Visual Transparente</h3>
+            <h3>Auditoria &amp; Revisão Manual</h3>
             <p>
-              Círculos verdes nos acertos, vermelhos com "X" nos erros e laranjas indicando o gabarito oficial esperado. Você tem certeza absoluta do que foi lido.
+              Círculos verdes, vermelhos e laranjas garantem transparência total. Precisou ajustar algo ou anular questão? Faça <strong>revisão manual em 1 toque</strong> com suporte a <strong>questões anuladas</strong>.
             </p>
           </div>
 
           <div class="feature-card">
             <div class="feature-icon">📊</div>
-            <h3>Inteligência Pedagógica</h3>
+            <h3>Boletins PDF &amp; Diagnóstico</h3>
             <p>
-              Identifique na hora quais foram as questões mais difíceis da turma e descubra quais alternativas funcionaram como "pegadinhas" para os alunos.
+              Descubra as questões mais difíceis e as "pegadinhas" da turma, e emita <strong>relatórios da turma e boletins individuais em PDF</strong> prontos para enviar pelo <strong>WhatsApp</strong>.
             </p>
           </div>
 
           <div class="feature-card">
             <div class="feature-icon">✂️</div>
-            <h3>Economia Extrema de Papel</h3>
+            <h3>Gabarito Flexível &amp; Economia</h3>
             <p>
-              Gere folhas padronizadas de 1, 2 ou 4 gabaritos por página A4 com linhas pontilhadas de corte. Reduza o custo de impressão da escola em até 4 vezes.
+              Crie provas de <strong>1 a 50 questões</strong> com <strong>2 a 5 alternativas</strong> (<strong>A–C</strong>, <strong>A–D</strong>, <strong>A–E</strong> ou <strong>V/F</strong>) e imprima 1, 2 ou 4 gabaritos por folha A4.
             </p>
           </div>
 
           <div class="feature-card">
             <div class="feature-icon">📝</div>
-            <h3>Leitura do Nome &amp; Chamada</h3>
+            <h3>Múltiplas Turmas &amp; Chamada</h3>
             <p>
-              Lê o nome escrito à mão no cabeçalho e cruza automaticamente com a sua Lista de Chamada para sugerir e vincular o aluno com um toque.
+              Gerencie <strong>múltiplas turmas</strong> e avaliações isoladas. O OCR lê o nome manuscrito no cabeçalho e cruza com sua Lista de Chamada para vincular o aluno em segundos.
             </p>
           </div>
 
           <div class="feature-card">
             <div class="feature-icon">🔒</div>
-            <h3>100% Offline &amp; LGPD</h3>
+            <h3>100% Offline, LGPD &amp; Backup</h3>
             <p>
-              Nenhuma foto, nota ou nome de aluno é transmitido para servidores ou nuvem. Todos os dados permanecem isolados na memória segura do seu próprio celular.
+              Nenhuma foto ou nota sai do celular. Exporte planilhas CSV ou gere um <strong>backup completo offline (.zip)</strong> com todas as turmas e provas corrigidas quando precisar.
             </p>
           </div>
         </div>
@@ -994,26 +1109,26 @@
           <div class="step-card">
             <div class="step-number">1</div>
             <h3>Emita as Folhas em PDF</h3>
-            <p>Selecione a quantidade de questões (10, 25 ou 50), escolha o layout econômico e gere o PDF na hora para impressão ou compartilhamento.</p>
+            <p>Selecione de <strong>1 a 50 questões</strong>, defina de <strong>2 a 5 alternativas</strong> (A–E, A–D ou V/F), escolha o layout econômico e gere o PDF na hora para impressão ou WhatsApp.</p>
           </div>
 
           <div class="step-card">
             <div class="step-number">2</div>
             <h3>Configure o Gabarito</h3>
-            <p>Marque as respostas oficiais corretas com toques simples no aplicativo e ajuste a nota de corte desejada para a turma.</p>
+            <p>Marque as respostas oficiais corretas com toques simples, sinalize eventuais <strong>questões anuladas</strong> (com recálculo automático) e ajuste a nota de corte da turma.</p>
           </div>
 
           <div class="step-card">
             <div class="step-number">3</div>
             <h3>Escaneie e Exporte</h3>
-            <p>Aponte a câmera para a folha do aluno. O app corrige na hora, anota a imagem com a auditoria e gera a planilha consolidada em CSV.</p>
+            <p>Aponte a câmera em qualquer posição (0° a 270°). O app corrige na hora, aceita revisão manual e gera <strong>boletins individuais em PDF</strong> e planilhas CSV.</p>
           </div>
         </div>
 
         <div class="beta-callout">
           <div class="beta-callout-text">
             <h3>🎓 Seja um Professor Beta Tester</h3>
-            <p>Participe do Beta Fechado na Google Play (Android) e garanta acesso gratuito após o lançamento oficial.</p>
+            <p>Inscreva-se com seu Gmail e receba o convite oficial da Google Play por e-mail para baixar o app no Android e garantir acesso gratuito após o lançamento.</p>
           </div>
           <a href="https://docs.google.com/forms/d/1wMNkDaTGjpJIft3FW5iDv74Ot44a9PgL_qbyNCLr-SQ/viewform" class="btn-primary" target="_blank" rel="noopener noreferrer">
             <span>✍️ Inscrever-se no Beta</span>
@@ -1034,21 +1149,25 @@
         </div>
 
         <div class="screens-grid">
-          <div class="screen-card">
+          <div class="screen-card" role="button" tabindex="0" aria-label="Ampliar tela 1. Emissão de PDF">
             <img src="assets/screenshot_2_emissao_pdf.png?v=4" alt="Emissão de gabarito em PDF" loading="lazy">
             <span>1. Emissão de PDF</span>
+            <span class="screen-zoom-hint">🔍 Clique para ampliar</span>
           </div>
-          <div class="screen-card">
+          <div class="screen-card" role="button" tabindex="0" aria-label="Ampliar tela 2. Corretor OMR">
             <img src="assets/screenshot_1_corretor.png?v=4" alt="Tela do corretor OMR" loading="lazy">
             <span>2. Corretor OMR</span>
+            <span class="screen-zoom-hint">🔍 Clique para ampliar</span>
           </div>
-          <div class="screen-card">
+          <div class="screen-card" role="button" tabindex="0" aria-label="Ampliar tela 3. Quadro da Turma">
             <img src="assets/screenshot_3_quadro_turma.png?v=4" alt="Quadro de notas da turma" loading="lazy">
             <span>3. Quadro da Turma</span>
+            <span class="screen-zoom-hint">🔍 Clique para ampliar</span>
           </div>
-          <div class="screen-card">
+          <div class="screen-card" role="button" tabindex="0" aria-label="Ampliar tela 4. Análise Pedagógica">
             <img src="assets/screenshot_4_analise_pedagogica.png?v=4" alt="Análise pedagógica por questão" loading="lazy">
             <span>4. Análise Pedagógica</span>
+            <span class="screen-zoom-hint">🔍 Clique para ampliar</span>
           </div>
         </div>
       </div>
@@ -1093,11 +1212,11 @@
         <p>
           Inscreva-se no Beta Fechado para professores e garanta acesso gratuito após o lançamento oficial na Google Play, sem custos ou mensalidades.
         </p>
-        <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
-          <a href="https://docs.google.com/forms/d/1wMNkDaTGjpJIft3FW5iDv74Ot44a9PgL_qbyNCLr-SQ/viewform" class="btn-primary" target="_blank" rel="noopener noreferrer" style="background: #10B981; color: #0F172A !important;">
+        <div class="cta-actions">
+          <a href="https://docs.google.com/forms/d/1wMNkDaTGjpJIft3FW5iDv74Ot44a9PgL_qbyNCLr-SQ/viewform" class="btn-primary btn-cta-accent" target="_blank" rel="noopener noreferrer">
             <span>🎓 Quer testar o app? Garanta acesso gratuito!</span>
           </a>
-          <a href="politica-privacidade.html" class="btn-secondary" style="background: transparent; color: #FFFFFF !important; border-color: rgba(255,255,255,0.4);">
+          <a href="politica-privacidade.html" class="btn-secondary btn-cta-outline">
             <span>🛡️ Conhecer Nossa Política LGPD</span>
           </a>
         </div>
@@ -1110,7 +1229,7 @@
     <div class="container">
       <div class="footer-wrapper">
         <div class="brand">
-          <img src="assets/icone_512x512.png" alt="GabScan Logo">
+          <img src="assets/icone_web.png" alt="GabScan Logo" width="40" height="40">
           <span>GabScan</span>
         </div>
         <ul class="footer-links">
@@ -1127,20 +1246,79 @@
     </div>
   </footer>
 
+  <!-- Modal Lightbox para Telas -->
+  <div id="lightbox-modal" class="lightbox-modal" role="dialog" aria-modal="true" aria-labelledby="lightbox-caption" hidden>
+    <div class="lightbox-content">
+      <button type="button" id="lightbox-close" class="lightbox-close" aria-label="Fechar visualização">&times;</button>
+      <img id="lightbox-img" src="assets/screenshot_1_corretor.png" alt="Visualização ampliada">
+      <p id="lightbox-caption" class="lightbox-caption"></p>
+    </div>
+  </div>
+
   <script>
     (function () {
       var video = document.getElementById('hero-tutorial-video');
       var btn = document.getElementById('toggle-sound-btn');
-      if (!video || !btn) return;
-      btn.addEventListener('click', function () {
-        if (video.muted) {
-          video.muted = false;
-          video.currentTime = 0;
-          video.play();
-          btn.textContent = '🔇 Silenciar Narração';
-        } else {
-          video.muted = true;
-          btn.textContent = '🔊 Ouvir Narração';
+      if (video && btn) {
+        btn.addEventListener('click', function () {
+          if (video.muted) {
+            video.muted = false;
+            video.currentTime = 0;
+            video.play();
+            btn.textContent = '🔇 Silenciar Narração';
+          } else {
+            video.muted = true;
+            btn.textContent = '🔊 Ouvir Narração';
+          }
+        });
+      }
+
+      var modal = document.getElementById('lightbox-modal');
+      var modalImg = document.getElementById('lightbox-img');
+      var modalCaption = document.getElementById('lightbox-caption');
+      var closeBtn = document.getElementById('lightbox-close');
+      var cards = document.querySelectorAll('.screen-card');
+
+      if (!modal || !modalImg || !modalCaption || !closeBtn) return;
+
+      function abrirLightbox(card) {
+        var img = card.querySelector('img');
+        var titulo = card.querySelector('span');
+        if (!img) return;
+        modalImg.src = img.src;
+        modalImg.alt = img.alt;
+        modalCaption.textContent = titulo ? titulo.textContent : img.alt;
+        modal.hidden = false;
+        document.body.style.overflow = 'hidden';
+        closeBtn.focus();
+      }
+
+      function fecharLightbox() {
+        modal.hidden = true;
+        document.body.style.overflow = '';
+      }
+
+      cards.forEach(function (card) {
+        card.addEventListener('click', function () {
+          abrirLightbox(card);
+        });
+        card.addEventListener('keydown', function (event) {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            abrirLightbox(card);
+          }
+        });
+      });
+
+      closeBtn.addEventListener('click', fecharLightbox);
+      modal.addEventListener('click', function (event) {
+        if (event.target === modal) {
+          fecharLightbox();
+        }
+      });
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' && !modal.hidden) {
+          fecharLightbox();
         }
       });
     })();

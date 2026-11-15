@@ -31,17 +31,21 @@ O **GabScan** é o assistente definitivo para professores e escolas, projetado p
 
 ```
 ├── assets/
-│   ├── icone_512x512.png                 # Ícone oficial de alta definição
-│   ├── banner_1024x500.png                # Feature graphic promocional da Google Play
-│   ├── screenshot_1_corretor.png          # Mockup Play Store: Tela do Corretor
-│   ├── screenshot_2_emissao_pdf.png       # Mockup Play Store: Emissão de PDF & Economia
-│   ├── screenshot_3_quadro_turma.png      # Mockup Play Store: Quadro da Turma & CSV
-│   └── screenshot_4_analise_pedagogica.png# Mockup Play Store: Diagnóstico & Distratores
-├── CNAME                                  # Apontamento de domínio personalizado (gabscan.com.br)
-├── index.html                             # Landing page moderna e responsiva
-├── politica-privacidade.html              # Termos de Privacidade e Conformidade LGPD
-├── politica_privacidade.html              # Rota alternativa de compatibilidade
-└── README.md                              # Documentação deste repositório
+│   ├── icone_web.png                     # Ícone web otimizado (128x128 px) para navbar e favicon
+│   ├── icone_512x512.png                 # Ícone oficial de alta definição (Play Store)
+│   ├── banner_1024x500.png               # Feature graphic promocional da Google Play
+│   ├── screenshot_1_corretor.png         # Mockup Play Store: Tela do Corretor
+│   ├── screenshot_2_emissao_pdf.png      # Mockup Play Store: Emissão de PDF & Economia
+│   ├── screenshot_3_quadro_turma.png     # Mockup Play Store: Quadro da Turma & CSV
+│   ├── screenshot_4_analise_pedagogica.png# Mockup Play Store: Diagnóstico & Distratores
+│   └── tutorial_gabscan.mp4              # Vídeo tutorial oficial para professores
+├── CNAME                                 # Apontamento de domínio personalizado (gabscan.com.br)
+├── index.html                            # Landing page responsiva com Lightbox e JSON-LD
+├── politica-privacidade.html             # Termos de Privacidade e Conformidade LGPD
+├── politica_privacidade.html             # Rota alternativa de compatibilidade
+├── robots.txt                            # Diretivas de indexação para buscadores
+├── sitemap.xml                           # Mapa oficial de URLs (SEO)
+└── README.md                             # Documentação deste repositório
 ```
 
 ---
