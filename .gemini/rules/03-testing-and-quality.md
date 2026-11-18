@@ -8,7 +8,7 @@
 ## Validação e Testes
 * Validação Automatizada (CI): Execução de HTMLHint para sintaxe e Lychee para validação de links [.github/workflows/ci.yml].
 * Suíte de Regressão Web via TDD (`gab_scan_app/test/unit/site_institucional_test.dart`): valida SEO, Lighthouse/performance de ativos, ausência de CSS morto/inline e sincronização entre `gabscan-site` e `gab_scan/site`.
-* Teste Manual: validação visual via servidor HTTP local em resoluções Desktop e Mobile antes de qualquer publicação [SUGESTÃO (confirmar)].
+* Teste Manual: validação visual via servidor HTTP local em resoluções Desktop e Mobile antes de qualquer publicação.
 * Validação de Links: testar todos os links de ancoragem interna (`#recursos`, `#economia`, `#como-funciona`, `#telas`, `#faq`) e rotas externas.
 
 ## Checklist Obrigatório da IA Pré-Conclusão

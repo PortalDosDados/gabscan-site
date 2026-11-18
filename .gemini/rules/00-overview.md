@@ -5,14 +5,14 @@
 * Atende aos pré-requisitos de aprovação na Play Store: Política de Privacidade e URL de suporte [README.md].
 
 ## Stack Tecnológica & Versões
-* Runtime: `NÃO IDENTIFICADO` (não requer Node.js, Python ou bundler) [inspeção da raiz].
-* Linguagens: HTML5 semântico e CSS3 puro [index.html; politica-privacidade.html].
-* Hospedagem: GitHub Pages via DNS Anycast com domínio customizado `gabscan.com.br` [README.md; CNAME].
-* Dependências / Frameworks: `NÃO IDENTIFICADO` (zero dependências externas ou pacotes npm) [index.html].
+* Runtime: Estático puro (não requer runtime de servidor, Node.js ou bundler) `[inspeção da raiz]`.
+* Linguagens: HTML5 semântico e CSS3 puro `[index.html; politica-privacidade.html]`.
+* Hospedagem: GitHub Pages via DNS Anycast com domínio customizado `gabscan.com.br` `[README.md; CNAME]`.
+* Dependências / Frameworks: Zero dependências externas ou pacotes npm (Vanilla HTML5/CSS3) `[index.html]`.
 
 ## Ciclo de Vida & Comandos
-* Instalação: `NÃO IDENTIFICADO` (não há etapa de `npm install` ou gerenciador de pacotes) [inspeção da raiz].
-* Execução local: `SUGESTÃO (confirmar)`:
+* Instalação: Não aplicável (arquivos estáticos prontos para servir) `[inspeção da raiz]`.
+* Execução local:
   * Python 3: `python -m http.server 8000`
   * Node.js/npx: `npx serve .`
   * VS Code: extensão *Live Server*
